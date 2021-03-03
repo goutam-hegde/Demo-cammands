@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Country Details</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+	function hitapi() {
+		alert("loading");
+		var url = "https://restcountries.eu/rest/v2/region/asia";
+
+		var xhr = new XMLHttpRequest();
+
+		var table = "<th>Name</th><th>Capital</th><th>Region</th><th>Populaion</th><th>Area</th>"
+		xhr.onreadystatechange = function() {
+
+			if (this.readyState == 4 && this.status == 200) {
+
+				var json = this.responseText;
+				
+				var jsonparsed = JSON.parse(json);
+				alert("Stil loading");
+				
+				
+				for (i = 0; i < 5; i++) {
+
+					table += "<tr><td>" + jsonparsed[i].name + "</td><td>"
+							+ jsonparsed[i].capital + "</td><td>"
+							+ jsonparsed[i].region+
+					"</td><td>" + jsonparsed[i].population + "</td><td>"
+							+ jsonparsed[i].area + "</td></tr>";
+					document.getElementById("table1").innerHTML = table;
+				
+				}
+
+				$.ajax({
+					url:'ApiResponseServlet',
+					type:"POST",
+					data:{
+						data:JSON.stringify(jsonparsed),
+					},
+					success:function(data){
+						$("#response").text(data);
+					}
+				});
+			}
+		};
+		xhr.open("GET", url, true);
+		xhr.send();
+	}
+</script>
+</head>
+<body>
+	<h1 id="header" align="center">Country Details</h1>
+
+	<button type="button" class="container" onclick="hitapi()">Get
+		Country Details</button>
+
+	<table id="table1"  border="1"></table>
+
+	<h1 id="response"></h1>
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+<web-app>
+	<display-name>Archetype Created Web Application</display-name>
+	
+	<welcome-file-list>
+	<welcome-file>Details.html</welcome-file>	
+	</welcome-file-list>
+	
+	
+	
+	
+	<servlet>
+	<servlet-name>ApiResponseServlet</servlet-name>
+	<servlet-class>com.mindtree.ajaxandservletcodechallenge.Servlet.ApiResponseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>ApiResponseServlet</servlet-name>
+	<url-pattern>/ApiResponseServlet</url-pattern>
+	</servlet-mapping>	
+
+
+	
+</web-app>
