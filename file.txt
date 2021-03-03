@@ -3,5 +3,8 @@ Adding a text file to git
 Adding another Line in text file
 
 MAking some changes
-
 making some more changes
+
+adding some changes to submain branch
+
+adding some more lines to submain
